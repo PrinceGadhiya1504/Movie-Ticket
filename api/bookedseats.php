@@ -3,7 +3,7 @@
 switch ($_SERVER["REQUEST_METHOD"]) {
     case "GET":
         if (isset($_GET["time"]) && isset($_GET["date"]))
-            getBookegSeatsByTimeAndDate($_GET["time"], isset($_GET["date"]));
+            getBookegSeatsByTimeAndDate($_GET["time"], $_GET["date"]);
         else
             getAllBookedSeats();
         break;
@@ -51,17 +51,13 @@ function getAllBookedSeats()
 
 function getBookegSeatsByTimeAndDate($time, $date)
 {
-    try {
+    try { 
         $array = array();
-        $requestString = file_get_contents("php://input");
-        $request = json_decode($requestString);
 
         $connection = new PDO("mysql:host=localhost;port=3306;dbname=MoviesDb", "root", "");
-
         $statement = $connection->prepare("SELECT * From `Bookings` WHERE `ShowTime` = ? AND `ShowDate` = ?");
         $statement->execute([$time, $date]);
         $bookings = $statement->fetchAll(PDO::FETCH_ASSOC);
-
         foreach ($bookings as $booking) {
             $bookingid = $booking['Id'];
             $statementseat = $connection->prepare("SELECT * From `BookedSeats` WHERE `BookingId` = ?");
