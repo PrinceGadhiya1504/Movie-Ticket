@@ -8,7 +8,7 @@ $relesedate = $_POST['relesedate'];
 $language = $_POST['language'];
 $ticketprice = $_POST['ticketprice'];
 $image = $_FILES['image']['name'];
-move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/movieticket/admin/images/$image");
+move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/Movie Ticket/admin/images/$image");
 
 
 $pdo = new PDO("mysql:host=localhost;dbname=MoviesDb","root","");

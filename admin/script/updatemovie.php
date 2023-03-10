@@ -8,14 +8,15 @@ $description = $_POST['description'];
 $relesedate = $_POST['relesedate'];
 $language = $_POST['language'];
 $ticketprice = $_POST['ticketprice'];
-$image = $_POST['image'];
+$image = $_FILES['image']['name'];
+move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/Movie Ticket/admin/images/$image");
 
 $pdo = new PDO("mysql:host=localhost;dbname=MoviesDb","root","");
 
 $statement = $pdo->prepare("UPDATE movies SET Name = ?, Description = ?, ReleaseDate = ?, Language = ?, TicketPrice = ?, ImageName = ? WHERE Id = ?");
 $statement->execute(array($name,$description,$relesedate,$language,$ticketprice,$image,$id));
 
-echo "$id<br>";
-echo "$image";
+echo '<script>alert("Movie Updated Sucessfully")</script>';
+header("Loction:../updatemovies.php")
 
 ?>

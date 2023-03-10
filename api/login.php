@@ -38,7 +38,7 @@ try
         die(json_encode(["message" => "Wrong email or password!"]));
     }
 
-    echo json_encode(["id" => $result['Id'], "username" => $result['Username'], "Password" => $result['PasswordHash']]);
+    echo json_encode(["Id" => $result['Id'], "Username" => $result['Username'], "Password" => $result['PasswordHash']]);
 }
 catch (Exception $ex)
 {

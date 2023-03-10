@@ -1,5 +1,6 @@
 <?php
 
+
 if ($_SERVER['REQUEST_METHOD'] != 'GET') {
     http_response_code(405);
     exit();
@@ -24,12 +25,12 @@ try {
         $user = $statementuser->fetch();
         $username = $user['FullName'];
 
-        $ShowTimeId = $booking['ShowTimeId'];
-        $statementshowtime = $connection->prepare("SELECT * From `showtimes` WHERE `Id` = ?");
-        $statementshowtime->execute([$ShowTimeId]);
-        $showtime = $statementshowtime->fetch();
-        $date = $showtime['Date'];
-        $time = $showtime['Time'];
+        // $ShowTimeId = $booking['MoviesId'];
+        // $statementshowtime = $connection->prepare("SELECT * From `showtimes` WHERE `Id` = ?");
+        // $statementshowtime->execute([$ShowTimeId]);
+        // $showtime = $statementshowtime->fetch();
+        // $date = $showtime['Date'];
+        // $time = $showtime['Time'];
 
         $temp = [
             "Id" => $booking['Id'],
