@@ -111,4 +111,6 @@ function BookSeats()
         $statementseat = $connection->prepare("INSERT INTO `BookedSeats` (`BookingId`,`Seats`) VALUES(?,?)");
         $statementseat->execute([$bookingId, $seat]);
     }
+
+    echo json_encode(["Id" => $bookingId]);
 }

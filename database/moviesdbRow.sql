@@ -20,7 +20,9 @@ CREATE TABLE `Movies`
     `ReleaseDate` DATE NOT NULL,
     `Language` VARCHAR(100) NOT NULL,
     `TicketPrice` INT NOT NULL,
-    `ImageName` VARCHAR(255) NOT NULL
+    `ImageName` VARCHAR(255) NOT NULL,
+    `FirstShowTime` VARCHAR(100) NOT NULL,
+    `SecondShowTime` VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE `Bookings`
@@ -30,7 +32,10 @@ CREATE TABLE `Bookings`
     `UserId` INT NOT NULL,
     `MovieId` INT NOT NULL,
     `BookingDateTime` DATETIME NOT NULL,
-    `ShowDateTime` DATETIME NOT NULL,
+    `ShowDate` DATE NOT NULL,
+    `ShowTime` VARCHAR NOT NULL,
+    `TotalPrice` BIGINT NOT NULL,
+ 
 
     CONSTRAINT `FkUserIdInBookings` FOREIGN KEY (`UserId`) REFERENCES `Users`(`Id`),
     CONSTRAINT `FkMovieIdInBookings` FOREIGN KEY (`MovieId`) REFERENCES `Movies`(`Id`)
